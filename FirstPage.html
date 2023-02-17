@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>My First Web Page</title>
+	<script>
+		function drawCat(cant) {
+			for (var i=0;i<cant; i++){
+				document.write(" =^.^= ");	
+			}
+		}
+		function preguntaCantidad(){
+			var x= prompt("Ingresa la cantidad de veces que quieres el gato: ")
+			return x;
+		}
+
+		function guessingGame() {
+			var number = Math.round(Math.random()*100+1);
+			var guess = prompt("Guess a number between 1 and 100: ");
+
+			while(guess!=number){
+				if (guess<number){
+					var tip=number-guess;
+					alert("Muy bajooooo!, sigue intentando "+tip);
+					guess = prompt("Guess again a number between 1 and 100: ");
+				}else{
+					var tip=guess-number;
+					alert("Muy aaaaltooo!,sigue intentando "+tip);
+					guess = prompt("Guess again a number between 1 and 100: ");
+				}
+
+			}
+
+			if (guess == number){ 
+				var name = prompt("Whats your name?");
+				var times = prompt("Give me a number: ");
+
+				for(var i=0;i<times;i++){
+					document.writeln("Lo hiciste "+name+"!!! Felicitaciones");
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Renzo's First Web Page</h1>
+	<h2>I'm learning JS</h2>
+	<h3>I'm following Bryson for this</h3>
+	<p>I can do anaything that I want , if I learn how to use this languaje
+	It's important for a QA tester to konw about this!</p>
+	<button onclick="drawCat(preguntaCantidad());">Click to see me!!</button>
+	<button onclick="guessingGame();">Click to see my guessing game :)</button>
+</body>
+</html>

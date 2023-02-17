@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body bgcolor="#aaffff">
+	<h1>DRAWING PROGRAM </h1>
+	<canvas id = "imgCanvas" width="600" height="400" onclick="draw(event)" onmousemove="draw(event)"> </canvas>
+	<script type="text/javascript">
+		var radius = 30;
+		var grow = true;
+
+		function randColor(){
+			var r =Math.round(Math.random()*240+16);
+			var g =Math.round(Math.random()*240+16);
+			var b =Math.round(Math.random()*240+16);
+			var color = "#" + r.toString(16) + g.toString(16) + b.toString(16);
+			return color;
+		}
+
+		function draw(e){
+			var canvas = document.getElementById("imgCanvas");
+			var ctx = canvas.getContext("2d");
+			var rect = canvas.getBoundingClientRect();
+			var posx = e.clientX - rect.left;
+			var posy = e.clientY - rect.top;
+			//ctx.fillStyle = "#aaaaff";
+			if (grow) 
+				radius++;
+			else{
+				radius--;
+			}
+			if(radius > 50 || radius <20)
+				grow = !grow;
+			
+			ctx.fillStyle = randColor() + "33";
+			ctx.beginPath();
+			ctx.arc(posx,posy,radius, 0, Math.PI*2);
+			ctx.fill();
+			ctx.strokeStyle = "#000000";
+			ctx.beginPath();
+			ctx.arc(posx,posy,radius, 0, Math.PI*2);
+			ctx.stroke();
+		}
+	</script>
+</body>
+</html>

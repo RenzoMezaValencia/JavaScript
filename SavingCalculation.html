@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>SAVINGS CALCULATOR</title>
+	<script type="text/javascript">
+		function calculate(){
+			var amount = parseInt(document.getElementById("amount").value);
+			var rate = parseFloat(document.getElementById("rate").value);
+			var years = parseInt(document.getElementById("years").value);
+			var total = 0;
+			for (var n=0;n<years;n++){
+				total = total*(1+rate/100) + amount*12;
+			}
+			document.getElementById("output").innerHTML = 
+				"After "+ years + " years, you'll have saved " + Math.round(total)+ " $(dolars) "
+		}
+	</script>
+</head>
+<body bgcolor="fffaaa">
+	<h1>Savings Calculator 1.0</h1>
+	<form>
+		<table>
+			<tr>
+				<td>Enter your monthly saving amount ($): </td>
+				<td><input type="text" id="amount" name="amount" size="5"></td>
+			</tr>			<tr>
+				<td>Enter your anunual interest rate (%): </td>
+				<td><input type="text" id="rate" name="rate" size="5"></td>
+			</tr>
+			<tr>
+				<td>Enter the number of years you'll save: </td>
+				<td><input type="text" id="years" name="years" size="5"></td>
+			</tr>
+		</table>
+		<button type="button" onclick="calculate()"> Click to calculate your savings. </button>
+		<h3 id="output">See how much you'll save in a year!!</h3>
+	</form>
+</body>
+</html>
